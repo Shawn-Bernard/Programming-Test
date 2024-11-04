@@ -14,23 +14,19 @@ public class Test : MonoBehaviour
     public void OnDrawGizmos()
     {
         
-        Vector3 LeftOver = (Thing2.transform.position - Thing1.transform.position);//Find out what's leftOver after subtraction
+        Vector3 Direction = (Thing2.transform.position - Thing1.transform.position);//Find out what's direction after subtraction
 
-        Thing2.transform.forward = LeftOver; //Using what's left over from that
+        Thing2.transform.forward = Direction;// making my thing2 giving direction to look at
+        float Distance = Direction.magnitude; 
 
-        
-
-        if (LeftOver.sqrMagnitude < 5)
-        {            
-            //Debug.Log("In range");
+        if (Distance > 6)
+        {
             Gizmos.color = Color.green;
-
         }
-
         else 
         {
-            //Debug.Log("Out of range");
             Gizmos.color = Color.red;
+            
         }
         Gizmos.DrawLine(Thing2.transform.position, (Thing1.transform.position));
         //Draws a line at Thing2 position to whatever this script is attached to, but I made it an object instead 
